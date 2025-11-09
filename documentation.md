@@ -50,3 +50,16 @@ Finally, when verifying if the tables are created properly use this step: ![img.
 > end: prajith ravisankar - date: nov 8, 2025 - time: 3:10 PM.
 
 ---
+
+> start: srijan ravisankar - date: nov 8, 2025 - time: 7:00 PM. 
+
+## creating transaction data model
+- creating transaction data model and having it in models package for seperation of concerns. 
+- we use @serializable because it helps us utilize kotlinx serialization library with ktor to convert the class to and from JSON. 
+  - this will be useful for API end points. 
+- we are planning to use string representation for amount and date for now, and convert it to decimal later.
+- refer Transactions.kt for the model
+
+> end: srijan ravisankar - date: nov 8, 2025 - time: 7:30 PM. 
+
+---
