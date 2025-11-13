@@ -112,5 +112,82 @@ fun Route.transactionRouting() {
 
             call.respond(HttpStatusCode.OK, transactions)
         }
+
+        // update a transaction by id
+        put("{id}") {
+            val transactionId = call.parameters["id"]?.toIntOrNull()
+            if (transactionId == null) {
+                call.respond(HttpStatusCode.BadRequest, "invalid transaction id")
+                return@put
+            }
+
+            // json body as transaction object
+            val updatedTransaction = call.receive<Transaction>()
+
+            val connection = Database.connect()
+            /**
+             * transaction_type = ?::transaction_type means:
+             * Take the parameter value (?) and cast it to the custom PostgreSQL enum type
+             * transaction_type (which only allows 'expense' or 'income')
+             */
+            val sql = """
+                UPDATE transactions
+                SET user_id = ?, 
+                    title = ?, 
+                    category = ?, 
+                    sub_category = ?, 
+                    transaction_type = ?::transaction_type, 
+                    amount = ?, 
+                    date = ?::timestamp with time zone, 
+                    description = ?, 
+                    location = ?
+                WHERE transaction_id = ?
+            """.trimIndent()
+
+            connection.use { conn ->
+                val statement = conn.prepareStatement(sql)
+                statement.setInt(1, updatedTransaction.userId)
+                statement.setString(2, updatedTransaction.title)
+                statement.setString(3, updatedTransaction.category)
+                statement.setString(4, updatedTransaction.subCategory)
+                statement.setString(5, updatedTransaction.transactionType)
+                statement.setBigDecimal(6, BigDecimal(updatedTransaction.amount))
+                statement.setString(7, updatedTransaction.date)
+                statement.setString(8, updatedTransaction.description)
+                statement.setString(9, updatedTransaction.location)
+                statement.setInt(10, transactionId) // the WHERE part
+
+                val numberOfRowsAffected = statement.executeUpdate()
+                if (numberOfRowsAffected == 0) {
+                    call.respond(HttpStatusCode.NotFound, "transaction not found for transaction id to update")
+                } else {
+                    call.respond(HttpStatusCode.OK, "transaction with transaction id updated successfully")
+                }
+            }
+        }
+
+        // delete a transaction by id
+        delete("{id}") {
+            val transactionId = call.parameters["id"]?.toIntOrNull()
+            if (transactionId == null) {
+                call.respond(HttpStatusCode.BadRequest, "invalid transaction id")
+                return@delete
+            }
+
+            val connection = Database.connect()
+            val sql = "DELETE FROM transactions WHERE transaction_id = ?"
+
+            connection.use { conn ->
+                val statement = conn.prepareStatement(sql)
+                statement.setInt(1, transactionId)
+                val numberOfRowsAffected = statement.executeUpdate()
+                if (numberOfRowsAffected == 0) {
+                    call.respond(HttpStatusCode.NotFound, "transaction not found")
+                } else {
+                    // here 204 response code means delete successfully executed with no body
+                    call.respond(HttpStatusCode.NoContent)
+                }
+            }
+        }
     }
 }

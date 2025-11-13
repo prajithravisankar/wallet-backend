@@ -238,3 +238,39 @@ Finally, when verifying if the tables are created properly use this step: ![img.
 > end: prajith ravisankar - date: nov 9, 2025 - time: 10:35 PM. 
 
 ---
+
+> start: prajith ravisankar - date: nov 10, 2025 - time: 8:40 AM.
+
+# Update and delete Operation for Transactions module
+
+## notes
+- following the same endpoint declarations as create and read from above. Please refer TransactionRoute.kt for update and delete endpoints in the route. 
+- transaction_type = ?::transaction_type means: Take the parameter value (?) and cast it to the custom PostgreSQL enum type transaction_type (which only allows 'expense' or 'income')
+- in the delete endpoint call.respond(HttpStatusCode.NoContent) implies 204 no content means successful delete with no body
+- opening interactive sql window inside docker container: 
+```terminaloutput
+docker exec -it my-wallet-db psql -U postgres
+```
+- docker exec
+  - Runs a command inside an already running container.
+- -i
+  - Keeps STDIN (input) open, so you can send commands into it (interactive input).
+- my-wallet-db
+  - This is the name (or ID) of your running PostgreSQL container.
+- psql -U postgres
+  - Runs the psql (PostgreSQL CLI client) inside that container:
+- -U postgres → connect as user postgres the default username setup by the docker as we havent' mentioned any user name
+- So basically, you’re saying: “Run the PostgreSQL shell (psql) inside the running container named my-wallet-db, connecting as user postgres”
+![img.png](temp_images/example_of_accessing_interactive_terminal_for_docker_postgres.png)
+
+## testing
+- put method: ![img.png](temp_images/transaction_put_method_postman.png)
+- delete method: creating the example using post: ![img.png](temp_images/delete_method_testing_transaction_1.png), here it is showing in the get results: ![img.png](temp_images/delete_transactions_testing_2.png), and then deleting it: ![img.png](temp_images/delete_transactions_3.png)
+
+## metrics and benchmark
+<TODO: add metrics and benchmark for update and delete endpoints after the MVP cycle>
+
+> end: prajith ravisankar - date: nov 12, 2025 - time: 9:20 PM.
+
+---
+
