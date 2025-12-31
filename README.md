@@ -10,12 +10,12 @@ This is a **Personal Finance Management System** built as a class project for **
 
 ---
 
-## Important Links
+## 🎖️ Important Links
 
 [![Development Notes](https://img.shields.io/badge/Docs-documentation.md-blue)](./documentation.md)
 [![Frontend Repo](https://img.shields.io/badge/GitHub-wallet--frontend-black)](https://github.com/srijanravisankar/wallet-frontend)
 
-> **📌 Development Notes:** [documentation.md](./documentation.md)  
+> ** 🎖️ Development Notes:** [documentation.md](./documentation.md)  
 > **Frontend Repo:** [wallet-frontend](https://github.com/srijanravisankar/wallet-frontend)
 
 ---
