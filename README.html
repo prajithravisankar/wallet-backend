@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="wallet-backend">Wallet Backend</h1>
+<h2 id="project-overview">Project Overview</h2>
+<p>This is a <strong>Personal Finance Management System</strong> built as a class project for <strong>COMP 4411 - Programming Languages</strong> at Lakehead University. The project demonstrates various programming paradigms including Object-Oriented, Procedural, and Concurrent programming using Kotlin and the Ktor framework.</p>
+<h2 id="development-docs-documentationmd">DEVELOPMENT DOCS: documentation.md</h2>
+<p>Please refer to <a href="./documentation.md">documentation.md</a></p>
+<p>This project was created using the <a href="https://start.ktor.io">Ktor Project Generator</a>.</p>
+<hr>
+<h2 id="%F0%9F%9A%80-setup--installation">🚀 Setup &amp; Installation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Before running this project, ensure you have the following installed:</p>
+<ol>
+<li>
+<p><strong>Java Development Kit (JDK) 21</strong></p>
+<ul>
+<li>Download from <a href="https://www.oracle.com/java/technologies/downloads/">Oracle</a> or use <a href="https://openjdk.org/">OpenJDK</a></li>
+<li>Verify installation: <code>java -version</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Docker Desktop</strong></p>
+<ul>
+<li>Download and install <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a></li>
+<li>Ensure Docker is running before proceeding</li>
+</ul>
+</li>
+<li>
+<p><strong>Gradle</strong> (Optional - project includes Gradle Wrapper)</p>
+<ul>
+<li>The project uses Gradle Wrapper (<code>./gradlew</code>), so manual installation is not required</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-1-clone-the-repository">Step 1: Clone the Repository</h3>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> &lt;repository-url&gt;
+<span class="hljs-built_in">cd</span> wallet-backend
+</div></code></pre>
+<h3 id="step-2-start-postgresql-database-with-docker">Step 2: Start PostgreSQL Database with Docker</h3>
+<p>This project uses PostgreSQL running in a Docker container for consistent development environments.</p>
+<p><strong>Start the PostgreSQL container:</strong></p>
+<pre class="hljs"><code><div>docker run --name my-wallet-db -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+</div></code></pre>
+<p><strong>Verify the container is running:</strong></p>
+<pre class="hljs"><code><div>docker ps
+</div></code></pre>
+<p>You should see <code>my-wallet-db</code> in the list of running containers.</p>
+<p><strong>Important Database Configuration:</strong></p>
+<ul>
+<li><strong>Host:</strong> <code>localhost</code></li>
+<li><strong>Port:</strong> <code>5432</code></li>
+<li><strong>Database:</strong> <code>postgres</code></li>
+<li><strong>Username:</strong> <code>postgres</code></li>
+<li><strong>Password:</strong> <code>mysecretpassword</code></li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> These credentials are configured in <code>src/main/kotlin/Databases.kt</code>. Update them if you use different credentials.</p>
+</blockquote>
+<h3 id="step-3-configure-database-connection">Step 3: Configure Database Connection</h3>
+<p>The database connection is configured in <code>Databases.kt</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">object</span> Database {
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">connect</span><span class="hljs-params">()</span></span>: Connection {
+        <span class="hljs-keyword">val</span> url = <span class="hljs-string">"jdbc:postgresql://localhost:5432/postgres"</span>
+        <span class="hljs-keyword">val</span> user = <span class="hljs-string">"postgres"</span>
+        <span class="hljs-keyword">val</span> password = <span class="hljs-string">"mysecretpassword"</span>
+        <span class="hljs-keyword">return</span> DriverManager.getConnection(url, user, password)
+    }
+}
+</div></code></pre>
+<p><strong>If you need to change credentials:</strong></p>
+<ol>
+<li>Open <code>src/main/kotlin/Databases.kt</code></li>
+<li>Update the <code>url</code>, <code>user</code>, and <code>password</code> values</li>
+<li>Ensure they match your Docker PostgreSQL configuration</li>
+</ol>
+<h3 id="step-4-build-the-project">Step 4: Build the Project</h3>
+<pre class="hljs"><code><div>./gradlew build
+</div></code></pre>
+<p>This will:</p>
+<ul>
+<li>Download all dependencies</li>
+<li>Compile Kotlin code</li>
+<li>Run tests</li>
+<li>Generate build artifacts</li>
+</ul>
+<h3 id="step-5-run-the-application">Step 5: Run the Application</h3>
+<pre class="hljs"><code><div>./gradlew run
+</div></code></pre>
+<p>The server will start on <strong>http://localhost:8080</strong></p>
+<p><strong>Expected console output:</strong></p>
+<pre class="hljs"><code><div>2024-11-XX XX:XX:XX.XXX [main] INFO  Application - Application started in 0.303 seconds.
+2024-11-XX XX:XX:XX.XXX [main] INFO  Application - Responding at http://0.0.0.0:8080
+</div></code></pre>
+<h3 id="step-6-database-initialization-automatic">Step 6: Database Initialization (Automatic)</h3>
+<p>On first startup, the application will:</p>
+<ol>
+<li>
+<p><strong>Create custom PostgreSQL types:</strong></p>
+<ul>
+<li><code>transaction_type</code> ENUM (<code>'expense'</code>, <code>'income'</code>)</li>
+<li><code>period_type</code> ENUM (<code>'daily'</code>, <code>'weekly'</code>, <code>'monthly'</code>, <code>'yearly'</code>)</li>
+</ul>
+</li>
+<li>
+<p><strong>Create tables if they don't exist:</strong></p>
+<ul>
+<li><code>users</code> - User accounts with authentication</li>
+<li><code>transactions</code> - Financial transaction records</li>
+<li><code>budgets</code> - Budget limits and tracking</li>
+</ul>
+</li>
+<li>
+<p><strong>Seed demo data</strong> (10 demo users with transactions and budgets)</p>
+</li>
+</ol>
+<p><strong>Verify database tables:</strong></p>
+<p>Access PostgreSQL interactive terminal:</p>
+<pre class="hljs"><code><div>docker <span class="hljs-built_in">exec</span> -it my-wallet-db psql -U postgres
+</div></code></pre>
+<p>List all tables:</p>
+<pre class="hljs"><code><div>\dt
+</div></code></pre>
+<p>Exit PostgreSQL terminal:</p>
+<pre class="hljs"><code><div>\q
+</div></code></pre>
+<h3 id="step-7-test-the-api">Step 7: Test the API</h3>
+<p><strong>Health check:</strong></p>
+<pre class="hljs"><code><div>curl http://localhost:8080/
+</div></code></pre>
+<p>Expected response: <code>Hello World!</code></p>
+<p><strong>Get transactions for user 1:</strong></p>
+<pre class="hljs"><code><div>curl http://localhost:8080/transactions/1
+</div></code></pre>
+<p><strong>Using Postman or any API client:</strong></p>
+<ul>
+<li>Import the OpenAPI documentation from: <code>http://localhost:8080/openapi</code></li>
+<li>Test all CRUD endpoints for Users, Transactions, and Budgets</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%90%B3-docker-commands-reference">🐳 Docker Commands Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker ps</code></td>
+<td>List running containers</td>
+</tr>
+<tr>
+<td><code>docker stop my-wallet-db</code></td>
+<td>Stop the database container</td>
+</tr>
+<tr>
+<td><code>docker start my-wallet-db</code></td>
+<td>Start the database container</td>
+</tr>
+<tr>
+<td><code>docker rm my-wallet-db</code></td>
+<td>Remove the container (must be stopped first)</td>
+</tr>
+<tr>
+<td><code>docker exec -it my-wallet-db psql -U postgres</code></td>
+<td>Access PostgreSQL CLI</td>
+</tr>
+<tr>
+<td><code>docker logs my-wallet-db</code></td>
+<td>View database logs</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%E2%9A%99%EF%B8%8F-system-requirements">⚙️ System Requirements</h2>
+<ul>
+<li><strong>OS:</strong> macOS, Linux, or Windows</li>
+<li><strong>RAM:</strong> Minimum 4GB (8GB recommended)</li>
+<li><strong>Disk Space:</strong> ~500MB for dependencies and Docker images</li>
+<li><strong>Java:</strong> JDK 21</li>
+<li><strong>Docker:</strong> Latest stable version</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%A7-troubleshooting">🔧 Troubleshooting</h2>
+<h3 id="port-5432-already-in-use">Port 5432 Already in Use</h3>
+<p>If you have PostgreSQL already running locally:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Stop local PostgreSQL service (macOS)</span>
+brew services stop postgresql
+
+<span class="hljs-comment"># Or use a different port for Docker</span>
+docker run --name my-wallet-db -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5432 -d postgres
+</div></code></pre>
+<p>Then update the port in <code>Databases.kt</code> to <code>5433</code>.</p>
+<h3 id="database-connection-failed">Database Connection Failed</h3>
+<ol>
+<li>Verify Docker container is running: <code>docker ps</code></li>
+<li>Check container logs: <code>docker logs my-wallet-db</code></li>
+<li>Ensure credentials in <code>Databases.kt</code> match your Docker setup</li>
+<li>Try restarting the container: <code>docker restart my-wallet-db</code></li>
+</ol>
+<h3 id="expected-errors-on-first-run">Expected Errors on First Run</h3>
+<p>You may see error messages about types already existing:</p>
+<pre class="hljs"><code><div>Error executing SQL statement: CREATE TYPE transaction_type...
+Error executing SQL statement: CREATE TYPE period_type...
+</div></code></pre>
+<p><strong>This is normal!</strong> The application uses <code>CREATE TYPE IF NOT EXISTS</code> logic. On subsequent runs, these types already exist, causing harmless errors that are caught and logged.</p>
+<h3 id="gradle-build-issues">Gradle Build Issues</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Clean and rebuild</span>
+./gradlew clean build
+
+<span class="hljs-comment"># If Gradle wrapper fails to download</span>
+chmod +x gradlew
+./gradlew wrapper --gradle-version=8.5
+</div></code></pre>
+<hr>
+<h2 id="technology-stack">Technology Stack</h2>
+<h3 id="backend-framework--language">Backend Framework &amp; Language</h3>
+<ul>
+<li><strong>Kotlin</strong> - Primary programming language</li>
+<li><strong>Ktor 3.0+</strong> - Asynchronous web framework for building REST APIs</li>
+<li><strong>Gradle</strong> - Build automation and dependency management</li>
+</ul>
+<h3 id="database">Database</h3>
+<ul>
+<li><strong>PostgreSQL</strong> - Relational database management system</li>
+<li><strong>JDBC</strong> - Direct database connectivity without ORM</li>
+</ul>
+<h3 id="security--utilities">Security &amp; Utilities</h3>
+<ul>
+<li><strong>BCrypt</strong> (at.favre.lib:bcrypt:0.10.2) - Password hashing</li>
+<li><strong>kotlinx.serialization</strong> - JSON serialization/deserialization</li>
+<li><strong>Logback</strong> - Logging framework</li>
+</ul>
+<h3 id="server">Server</h3>
+<ul>
+<li><strong>Netty</strong> - High-performance asynchronous event-driven network application framework</li>
+</ul>
+<h3 id="system-design-architecture-and-flow">system design architecture and flow</h3>
+<p><img src="./temp_images/Budget Planner _ Expense Tracker-7.jpg" alt="user login flow"></p>
+<p><img src="./temp_images/Budget Planner _ Expense Tracker-8.jpg" alt="create transaction/budget flow"></p>
+<p><img src="./temp_images/Budget Planner _ Expense Tracker-9.jpg" alt="system architecture"></p>
+<h2 id="programming-paradigms-demonstrated">Programming Paradigms Demonstrated</h2>
+<h3 id="1-object-oriented-programming-oop">1. Object-Oriented Programming (OOP)</h3>
+<p>The project uses OOP principles extensively with data classes, singleton objects, and encapsulation.</p>
+<p><strong>Example - Data Models:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// User.kt - Data class with properties</span>
+<span class="hljs-meta">@Serializable</span>
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>(
+    <span class="hljs-keyword">val</span> userId: <span class="hljs-built_in">Int</span>? = <span class="hljs-literal">null</span>,
+    <span class="hljs-keyword">val</span> firstName: String,
+    <span class="hljs-keyword">val</span> lastName: String,
+    <span class="hljs-keyword">val</span> email: String,
+    <span class="hljs-keyword">val</span> password: String,
+    <span class="hljs-keyword">val</span> createdAt: String? = <span class="hljs-literal">null</span>,
+    <span class="hljs-keyword">val</span> updatedAt: String? = <span class="hljs-literal">null</span>,
+)
+
+<span class="hljs-comment">// Transaction.kt - Domain model</span>
+<span class="hljs-meta">@Serializable</span>
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Transaction</span></span>(
+    <span class="hljs-keyword">val</span> transactionId: <span class="hljs-built_in">Int</span>? = <span class="hljs-literal">null</span>,
+    <span class="hljs-keyword">val</span> userId: <span class="hljs-built_in">Int</span>,
+    <span class="hljs-keyword">val</span> title: String,
+    <span class="hljs-keyword">val</span> category: String,
+    <span class="hljs-keyword">val</span> transactionType: String,
+    <span class="hljs-keyword">val</span> amount: String,
+    <span class="hljs-keyword">val</span> date: String
+)
+</div></code></pre>
+<p><strong>Example - Repository Pattern:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// UserRepository.kt - Encapsulation of data access logic</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">createUser</span><span class="hljs-params">(first: <span class="hljs-type">String</span>, last: <span class="hljs-type">String</span>, email: <span class="hljs-type">String</span>, hashedPassword: <span class="hljs-type">String</span>)</span></span>: <span class="hljs-built_in">Int</span> {
+        <span class="hljs-keyword">return</span> DbHelper.query(
+            sql = SqlBlueprints.INSERT_USER,
+            prepare = { ps -&gt;
+                ps.setString(<span class="hljs-number">1</span>, first)
+                ps.setString(<span class="hljs-number">2</span>, last)
+                ps.setString(<span class="hljs-number">3</span>, email)
+                ps.setString(<span class="hljs-number">4</span>, hashedPassword)
+            },
+            map = { rs -&gt;
+                rs.next()
+                rs.getInt(<span class="hljs-string">"user_id"</span>)
+            }
+        )
+    }
+}
+</div></code></pre>
+<p><strong>Example - Singleton Object Pattern:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Database.kt - Singleton object for database connection</span>
+<span class="hljs-keyword">object</span> Database {
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">connect</span><span class="hljs-params">()</span></span>: Connection {
+        <span class="hljs-keyword">val</span> url = <span class="hljs-string">"jdbc:postgresql://localhost:5432/postgres"</span>
+        <span class="hljs-keyword">val</span> user = <span class="hljs-string">"postgres"</span>
+        <span class="hljs-keyword">val</span> password = <span class="hljs-string">"mysecretpassword"</span>
+        <span class="hljs-keyword">return</span> DriverManager.getConnection(url, user, password)
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-comment">// Initialize database tables</span>
+    }
+}
+</div></code></pre>
+<h3 id="2-procedural-programming">2. Procedural Programming</h3>
+<p>The project uses procedural approaches for sequential operations and data processing.</p>
+<p><strong>Example - Routing Configuration:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Routing.kt - Procedural route setup</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> Application.<span class="hljs-title">configureRouting</span><span class="hljs-params">()</span></span> {
+    routing {
+        userRouting()
+        transactionRouting()
+        budgetRouting()
+
+        <span class="hljs-keyword">get</span>(<span class="hljs-string">"/"</span>) {
+            call.respondText(<span class="hljs-string">"Hello World!"</span>)
+        }
+    }
+}
+</div></code></pre>
+<p><strong>Example - Database Operations:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// TransactionRoutes.kt - Procedural database insert</span>
+post {
+    <span class="hljs-keyword">val</span> transaction = call.receive&lt;Transaction&gt;()
+    <span class="hljs-keyword">val</span> connection = Database.connect()
+
+    <span class="hljs-keyword">val</span> sql = <span class="hljs-string">"""
+        INSERT INTO transactions (user_id, title, category, transaction_type, amount, date)
+        VALUES (?, ?, ?, ?::transaction_type, ?, ?::timestamp with time zone)
+    """</span>.trimIndent()
+
+    connection.use { conn -&gt;
+        <span class="hljs-keyword">val</span> statement = conn.prepareStatement(sql)
+        statement.setInt(<span class="hljs-number">1</span>, transaction.userId)
+        statement.setString(<span class="hljs-number">2</span>, transaction.title)
+        statement.setString(<span class="hljs-number">3</span>, transaction.category)
+        statement.setString(<span class="hljs-number">5</span>, transaction.transactionType)
+        statement.setBigDecimal(<span class="hljs-number">6</span>, BigDecimal(transaction.amount))
+        statement.executeUpdate()
+    }
+
+    call.respond(HttpStatusCode.Created, <span class="hljs-string">"Transaction stored successfully"</span>)
+}
+</div></code></pre>
+<h3 id="3-concurrent-programming">3. Concurrent Programming</h3>
+<p>The project demonstrates thread-based concurrency with proper synchronization mechanisms.</p>
+<p><strong>Example - Thread-Safe Demo Data Generation:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// DemoDataSeeder.kt - Concurrent data seeding with thread safety</span>
+<span class="hljs-keyword">object</span> DemoDataSeeder {
+    <span class="hljs-comment">// Concurrency primitives</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> userInsertLock = ReentrantLock()
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> userIdListRWLock = ReentrantReadWriteLock()
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> sharedUserIdList = mutableListOf&lt;<span class="hljs-built_in">Int</span>&gt;()
+
+    <span class="hljs-comment">// Thread-safe write operation</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">addUserIdThreadSafely</span><span class="hljs-params">(newId: <span class="hljs-type">Int</span>)</span></span> {
+        userIdListRWLock.writeLock().withLock {
+            sharedUserIdList.add(newId)
+        }
+    }
+
+    <span class="hljs-comment">// Thread-safe read operation</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">safelyGetAllUserIdsSnapshot</span><span class="hljs-params">()</span></span>: List&lt;<span class="hljs-built_in">Int</span>&gt; {
+        userIdListRWLock.readLock().withLock {
+            <span class="hljs-keyword">return</span> sharedUserIdList.toList()
+        }
+    }
+
+    <span class="hljs-comment">// Creating concurrent worker threads</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">createConcurrentWorkerThreadsForAllUsers</span><span class="hljs-params">(userIds: <span class="hljs-type">List</span>&lt;<span class="hljs-type">Int</span>&gt;)</span></span> {
+        <span class="hljs-keyword">val</span> allThreads = mutableListOf&lt;Thread&gt;()
+
+        <span class="hljs-keyword">for</span> (userId <span class="hljs-keyword">in</span> userIds) {
+            <span class="hljs-comment">// One transaction thread per category</span>
+            <span class="hljs-keyword">for</span> (category <span class="hljs-keyword">in</span> categories) {
+                <span class="hljs-keyword">val</span> t = Thread({
+                    generateTransactions(userId, category)
+                }, <span class="hljs-string">"Tx-User<span class="hljs-variable">$userId</span>-<span class="hljs-variable">$category</span>"</span>)
+                t.start()
+                allThreads.add(t)
+            }
+
+            <span class="hljs-comment">// One budget thread per user</span>
+            <span class="hljs-keyword">val</span> b = Thread({
+                generateBudgets(userId)
+            }, <span class="hljs-string">"Budget-User<span class="hljs-variable">$userId</span>"</span>)
+            b.start()
+            allThreads.add(b)
+        }
+
+        <span class="hljs-comment">// Wait for all threads to complete</span>
+        allThreads.forEach { it.join() }
+    }
+}
+</div></code></pre>
+<h3 id="4-functional-programming-elements">4. Functional Programming Elements</h3>
+<p>Kotlin's functional programming features are used throughout the project.</p>
+<p><strong>Example - Higher-Order Functions:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// DbHelper.kt - Generic query function using lambdas</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;T&gt;</span> <span class="hljs-title">query</span><span class="hljs-params">(
+    sql: <span class="hljs-type">String</span>,
+    prepare: (<span class="hljs-type">PreparedStatement</span>) -&gt; <span class="hljs-type">Unit</span>,
+    map: (<span class="hljs-type">ResultSet</span>) -&gt; <span class="hljs-type">T</span>
+)</span></span>: T {
+    Database.connect().use { connection -&gt;
+        connection.prepareStatement(sql).use { ps -&gt;
+            prepare(ps)
+            ps.executeQuery().use { rs -&gt;
+                <span class="hljs-keyword">return</span> map(rs)
+            }
+        }
+    }
+}
+</div></code></pre>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>User Management</strong>: Registration, login with BCrypt password hashing, profile updates</li>
+<li><strong>Transaction Tracking</strong>: Create, read, update, and delete financial transactions</li>
+<li><strong>Budget Management</strong>: Set and monitor spending budgets by category</li>
+<li><strong>RESTful API</strong>: Clean REST endpoints for all operations</li>
+<li><strong>Thread-Safe Demo Data</strong>: Concurrent data seeding with proper synchronization</li>
+<li><strong>PostgreSQL Integration</strong>: Direct JDBC usage with custom SQL queries</li>
+<li><strong>CORS Support</strong>: Cross-origin resource sharing for frontend integration</li>
+</ul>
+<h2 id="api-endpoints">API Endpoints</h2>
+<h3 id="users">Users</h3>
+<ul>
+<li><code>POST /users</code> - Create new user</li>
+<li><code>GET /users/login</code> - Authenticate user</li>
+<li><code>PUT /users/{id}</code> - Update user profile</li>
+</ul>
+<h3 id="transactions">Transactions</h3>
+<ul>
+<li><code>POST /transactions</code> - Create transaction</li>
+<li><code>GET /transactions/{userId}</code> - Get all transactions for a user</li>
+<li><code>PUT /transactions/{id}</code> - Update transaction</li>
+<li><code>DELETE /transactions/{id}</code> - Delete transaction</li>
+</ul>
+<h3 id="budgets">Budgets</h3>
+<ul>
+<li><code>POST /budgets</code> - Create budget</li>
+<li><code>GET /budgets/{userId}</code> - Get all budgets for a user</li>
+<li><code>PUT /budgets/{id}</code> - Update budget</li>
+<li><code>DELETE /budgets/{id}</code> - Delete budget</li>
+</ul>
+<h2 id="database-schema">Database Schema</h2>
+<p>The application uses PostgreSQL with the following custom types and tables:</p>
+<h3 id="custom-enum-types">Custom ENUM Types</h3>
+<ul>
+<li><code>transaction_type</code>: <code>'expense' | 'income'</code></li>
+<li><code>period_type</code>: <code>'daily' | 'weekly' | 'monthly' | 'yearly'</code></li>
+</ul>
+<h3 id="tables">Tables</h3>
+<ul>
+<li><strong>users</strong>: User accounts with authentication</li>
+<li><strong>transactions</strong>: Financial transaction records</li>
+<li><strong>budgets</strong>: Budget limits and tracking</li>
+</ul>
+<h2 id="useful-links">Useful Links</h2>
+<ul>
+<li><a href="https://ktor.io/docs/home.html">Ktor Documentation</a></li>
+<li><a href="https://github.com/ktorio/ktor">Ktor GitHub page</a></li>
+<li>The <a href="https://app.slack.com/client/T09229ZC6/C0A974TJ9">Ktor Slack chat</a>. You'll need to <a href="https://surveys.jetbrains.com/s3/kotlin-slack-sign-up">request an invite</a> to join.</li>
+</ul>
+<h2 id="features">Features</h2>
+<p>Here's a list of features included in this project:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://start.ktor.io/p/routing">Routing</a></td>
+<td>Provides a structured routing DSL</td>
+</tr>
+<tr>
+<td><a href="https://start.ktor.io/p/openapi">OpenAPI</a></td>
+<td>Serves OpenAPI documentation</td>
+</tr>
+<tr>
+<td><a href="https://start.ktor.io/p/cors">CORS</a></td>
+<td>Enables Cross-Origin Resource Sharing (CORS)</td>
+</tr>
+<tr>
+<td><a href="https://start.ktor.io/p/kotlinx-serialization">kotlinx.serialization</a></td>
+<td>Handles JSON serialization using kotlinx.serialization library</td>
+</tr>
+<tr>
+<td><a href="https://start.ktor.io/p/content-negotiation">Content Negotiation</a></td>
+<td>Provides automatic content conversion according to Content-Type and Accept headers</td>
+</tr>
+<tr>
+<td><a href="https://start.ktor.io/p/postgres">Postgres</a></td>
+<td>Adds Postgres database to your application</td>
+</tr>
+</tbody>
+</table>
+<h2 id="building--running">Building &amp; Running</h2>
+<p>To build or run the project, use one of the following tasks:</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>./gradlew test</code></td>
+<td>Run the tests</td>
+</tr>
+<tr>
+<td><code>./gradlew build</code></td>
+<td>Build everything</td>
+</tr>
+<tr>
+<td><code>./gradlew run</code></td>
+<td>Run the server</td>
+</tr>
+</tbody>
+</table>
+<p>If the server starts successfully, you'll see the following output:</p>
+<pre class="hljs"><code><div>2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
+2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
+</div></code></pre>
+
+</body>
+</html>

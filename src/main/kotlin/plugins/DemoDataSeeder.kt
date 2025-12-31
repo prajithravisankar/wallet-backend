@@ -54,9 +54,9 @@ object DemoDataSeeder {
     // Concurrency primitives + shared data structures
     // -------------------------------------------------------------------------
 
-    private val userInsertLock = ReentrantLock()
-    private val userIdListRWLock = ReentrantReadWriteLock()
-    private val sharedUserIdList = mutableListOf<Int>()
+    private val userInsertLock = ReentrantLock() // Ensures that only one thread at a time can run a critical section, protects the user creation block, so user IDs are generated in a safe, predictable way.
+    private val userIdListRWLock = ReentrantReadWriteLock() // Many threads can read at the same time.Only one thread can write, and nobody can read while writing.
+    private val sharedUserIdList = mutableListOf<Int>() // This is the shared data that could be accessed by multiple threads.That’s why we wrap access with read/write locks.
 
     // -------------------------------------------------------------------------
     // ENTRY POINT
@@ -99,6 +99,7 @@ object DemoDataSeeder {
     // -------------------------------------------------------------------------
 
     private fun createDemoUsersSequentially() {
+        // Ensures the entire loop is executed by only one thread at a time.
         userInsertLock.withLock {
 
             println("[DemoDataSeeder] Creating demo users...")

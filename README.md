@@ -4,15 +4,26 @@
 
 This is a **Personal Finance Management System** built as a class project for **COMP 4411 - Programming Languages** at Lakehead University. The project demonstrates various programming paradigms including Object-Oriented, Procedural, and Concurrent programming using Kotlin and the Ktor framework.
 
-## DEVELOPMENT DOCS: documentation.md
+## Important Links
 
-Please refer to [documentation.md](./documentation.md)
+- Please Refer to my notes here to understand my development process: [documentation.md](./documentation.md)
+- The frontend Repository: [wallet frontend repository](https://github.com/srijanravisankar/wallet-frontend)
 
 This project was created using the [Ktor Project Generator](https://start.ktor.io).
 
 ---
 
-## 🚀 Setup & Installation
+### system design architecture and flow
+
+![user login flow](./temp_images/Budget%20Planner%20_%20Expense%20Tracker-7.jpg)
+
+![create transaction/budget flow](./temp_images/Budget%20Planner%20_%20Expense%20Tracker-8.jpg)
+
+![system architecture](./temp_images/Budget%20Planner%20_%20Expense%20Tracker-9.jpg)
+
+---
+
+## Setup & Installation
 
 ### Prerequisites
 
@@ -175,7 +186,7 @@ curl http://localhost:8080/transactions/1
 
 ---
 
-## 🐳 Docker Commands Reference
+## Docker Commands Reference
 
 | Command                                         | Description                                  |
 | ----------------------------------------------- | -------------------------------------------- |
@@ -188,7 +199,7 @@ curl http://localhost:8080/transactions/1
 
 ---
 
-## ⚙️ System Requirements
+## System Requirements
 
 - **OS:** macOS, Linux, or Windows
 - **RAM:** Minimum 4GB (8GB recommended)
@@ -198,7 +209,7 @@ curl http://localhost:8080/transactions/1
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Port 5432 Already in Use
 
@@ -267,14 +278,6 @@ chmod +x gradlew
 ### Server
 
 - **Netty** - High-performance asynchronous event-driven network application framework
-
-### system design architecture and flow
-
-![user login flow](./temp_images/Budget%20Planner%20_%20Expense%20Tracker-7.jpg)
-
-![create transaction/budget flow](./temp_images/Budget%20Planner%20_%20Expense%20Tracker-8.jpg)
-
-![system architecture](./temp_images/Budget%20Planner%20_%20Expense%20Tracker-9.jpg)
 
 ## Programming Paradigms Demonstrated
 
@@ -525,25 +528,6 @@ The application uses PostgreSQL with the following custom types and tables:
 - **users**: User accounts with authentication
 - **transactions**: Financial transaction records
 - **budgets**: Budget limits and tracking
-
-## Useful Links
-
-- [Ktor Documentation](https://ktor.io/docs/home.html)
-- [Ktor GitHub page](https://github.com/ktorio/ktor)
-- The [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). You'll need to [request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) to join.
-
-## Features
-
-Here's a list of features included in this project:
-
-| Name                                                                   | Description                                                                        |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| [Routing](https://start.ktor.io/p/routing)                             | Provides a structured routing DSL                                                  |
-| [OpenAPI](https://start.ktor.io/p/openapi)                             | Serves OpenAPI documentation                                                       |
-| [CORS](https://start.ktor.io/p/cors)                                   | Enables Cross-Origin Resource Sharing (CORS)                                       |
-| [kotlinx.serialization](https://start.ktor.io/p/kotlinx-serialization) | Handles JSON serialization using kotlinx.serialization library                     |
-| [Content Negotiation](https://start.ktor.io/p/content-negotiation)     | Provides automatic content conversion according to Content-Type and Accept headers |
-| [Postgres](https://start.ktor.io/p/postgres)                           | Adds Postgres database to your application                                         |
 
 ## Building & Running
 

@@ -8,8 +8,8 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    configureHTTP()
-    configureSerialization()
-    configureDatabases()
-    configureRouting()
+    configureHTTP() // this setsup cors and openAPI
+    configureSerialization() // takes care of json serialization
+    configureDatabases() // connects postgre sql and seeds demo data
+    configureRouting() // sets up routing, registers all rest routes
 }

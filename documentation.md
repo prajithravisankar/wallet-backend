@@ -511,4 +511,5 @@ delete("{id}") {
 
 ---
 
+postgres=# select * from transactions where user_id = 10 order by created_at desc limit 10;
 

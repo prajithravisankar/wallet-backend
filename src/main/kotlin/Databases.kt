@@ -3,7 +3,10 @@ package com.example
 import java.sql.Connection
 import java.sql.DriverManager
 
+// object keyword creates true singleton automatically, Its initialization is thread-safe
+// kotlin ensures thread safety for objects.
 object Database {
+//    connect() opens a JDBC connection to jdbc:postgresql://localhost:5432/postgres with user postgres.
     fun connect(): Connection {
 //        val url = "jdbc:postgresql://localhost:5432/postgres"
 //        val user = "postgres"
@@ -17,6 +20,7 @@ object Database {
         return DriverManager.getConnection(url, user, password)
     }
 
+//    init() creates two PostgreSQL enum types:
     fun init() {
         val sqlStatements = listOf(
             "CREATE TYPE transaction_type AS ENUM ('expense', 'income');",
